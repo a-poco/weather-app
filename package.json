@@ -20,5 +20,6 @@
   "homepage": "https://github.com/a-poco/weather-app#readme",
   "dependencies": {
     "express": "^4.17.3"
-  }
+  },
+  "type": "module"
 }
