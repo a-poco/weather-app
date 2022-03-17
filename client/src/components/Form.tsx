@@ -1,12 +1,12 @@
 import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
-import { AddWeather} from '../types';
+import { AddWeather } from '../types';
 import '../App.css';
 
-interface AddWeatherProps{
+interface AddWeatherProps {
     addWeather: AddWeather;
 }
-    const AddWeatherForm: React.FC<AddWeatherProps> = ({ addWeather }) => {
+const AddWeatherForm: React.FC<AddWeatherProps> = ({ addWeather }) => {
     const [cityName, setCityName] = useState("");
 
 
@@ -23,11 +23,13 @@ interface AddWeatherProps{
     }
     
     return (
-    <form className="form">
-        <label>Find a City</label>
-        <input type="text" className="form__name" placeholder="..." name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
-        <button type="submit"  className="form__btn"  onClick={handleSubmit}>Search</button>
-    </form>
+        <form className="form">
+            <label>Find a City</label>
+            <div>
+                <input type="text" className="form__name" placeholder="..." name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
+                <button type="submit" className="form__btn" onClick={handleSubmit}>Search</button>
+            </div>
+        </form>
     );
 };
 

@@ -4,27 +4,30 @@ import 'dotenv/config'
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-const SECRET_KEY="ce99411970192212f1a4e3ce28339cf2"
+const getTodaysDate = () => {
+  const months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+  let current_datetime = new Date()
+  let formatted_date = current_datetime.getDate() + " " + months[current_datetime.getMonth()]
+  return formatted_date
+}
 
 app.get("/api", async (req, res) => {
   const cityName = req.query.query
- const weather = await fetch(
-  `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${SECRET_KEY}&units=metric`
-)
-  const data  = await weather.json();
-  const weatherData = {
+  const weather = await fetch(
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${process.env.SECRET_KEY}&units=metric`
+  )
+  const data = await weather.json();
+
+  const response = {
     forecast: data.weather[0].description,
     temperature: data.main.temp,
     name: data.name,
-    icon: data.weather[0].icon
-
+    icon: data.weather[0].icon,
+    date: getTodaysDate()
   }
-  const result = weatherData
-  console.log(result)
-  res.json(result);
+
+  res.json(response);
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
