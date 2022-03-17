@@ -6,25 +6,26 @@ const app = express();
 
 const SECRET_KEY="ce99411970192212f1a4e3ce28339cf2"
 
-const getWeather = async () => {
-  const weather = await fetch(
-  `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${SECRET_KEY}`
+app.get("/api", async (req, res) => {
+ 
+  console.log("this is the whoole req", req)
+  const cityName = req.query.query
+  // console.log("THIS IS THE CITY NAME", cityName)
+
+ const weather = await fetch(
+  `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${SECRET_KEY}&units=metric`
 )
   const data  = await weather.json();
-  const forecast = data.weather[0].description;
-  const temperature = data.main.temp;
-  const name = data.name;
-  // console.log(`Today's forecast for ${name}: ${forecast}`);
-  // console.log(`It's currently ${temperature}°F `);
-  return data
-}
-
-
-app.get("/api", async (req, res) => {
- const result = await getWeather();
- console.log(result)
-  return res.send(result);
+  const weatherData = {
+    forecast: data.weather[0].description,
+    temperature: data.main.temp,
+    name: data.name,
+  }
+  const result = weatherData
+  res.json(result);
 });
+
+
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

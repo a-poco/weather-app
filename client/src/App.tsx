@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { WeatherData, AddWeather } from './types';
+import AddWeatherForm from './components/Form'
 import './App.css';
 
-function App() {
+const initialData: WeatherData | null = {
+  forecast: '',
+  temperature: 0,
+  name: ''
+};
+
+const App = () => {
+  const [data, setData] = useState(initialData);
+  const [cityName, setCityName] = useState("");
+
+  const addWeather: AddWeather = (name) => {
+    setCityName(name)
+  }
+  useEffect(() => {
+    if (cityName === "") {
+      return
+    }
+    fetch(`/api?query=${cityName}`)
+      .then((res) => res.json())
+      .then((response) => setData(response));
+  }, [cityName]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      < AddWeatherForm addWeather={addWeather} />
+      <h1>{!data ? "Loading..." : data.name}</h1>
+      <h1>{!data ? "Loading..." : data.forecast}</h1>
+      <h1>{!data ? "Loading..." : data.temperature}</h1>
+    </React.Fragment>
   );
 }
 
 export default App;
+
