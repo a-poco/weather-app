@@ -7,11 +7,7 @@ const app = express();
 const SECRET_KEY="ce99411970192212f1a4e3ce28339cf2"
 
 app.get("/api", async (req, res) => {
- 
-  console.log("this is the whoole req", req)
   const cityName = req.query.query
-  // console.log("THIS IS THE CITY NAME", cityName)
-
  const weather = await fetch(
   `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${SECRET_KEY}&units=metric`
 )
@@ -20,8 +16,11 @@ app.get("/api", async (req, res) => {
     forecast: data.weather[0].description,
     temperature: data.main.temp,
     name: data.name,
+    icon: data.weather[0].icon
+
   }
   const result = weatherData
+  console.log(result)
   res.json(result);
 });
 

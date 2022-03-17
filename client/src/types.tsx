@@ -1,7 +1,8 @@
 type WeatherData = {
     forecast: string,
     temperature: number,
-    name:  string
+    name:  string,
+    icon: string
   }
 
   type AddWeather = (name: string) => void;

@@ -1,7 +1,7 @@
-import React, { ChangeEvent, FormEvent, useEffect } from "react";
+import React, { ChangeEvent, FormEvent } from "react";
 import { useState } from "react";
 import { AddWeather} from '../types';
-// import "../styles/todoForm.css"
+import '../App.css';
 
 interface AddWeatherProps{
     addWeather: AddWeather;
@@ -25,8 +25,8 @@ interface AddWeatherProps{
     return (
     <form className="form">
         <label>Find a City</label>
-        <input type="text" placeholder="search for the weather in... " name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
-        <button type="submit" id="btnAddTodo" onClick={handleSubmit}>Search</button>
+        <input type="text" className="form__name" placeholder="..." name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
+        <button type="submit"  className="form__btn"  onClick={handleSubmit}>Search</button>
     </form>
     );
 };
