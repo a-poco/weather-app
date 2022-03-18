@@ -23,7 +23,8 @@ app.get("/api", async (req, res) => {
     temperature: data.main.temp,
     name: data.name,
     icon: data.weather[0].icon,
-    date: getTodaysDate()
+    date: getTodaysDate(),
+    id: (Math.random() * 100000000)
   }
 
   res.json(response);

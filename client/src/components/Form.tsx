@@ -21,15 +21,15 @@ const AddWeatherForm: React.FC<AddWeatherProps> = ({ addWeather }) => {
         addWeather(cityName);
         setCityName("");
     }
-    
+
     return (
-        <form className="form">
-            <label>Find a City</label>
-            <div>
-                <input type="text" className="form__name" placeholder="..." name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
-                <button type="submit" className="form__btn" onClick={handleSubmit}>Search</button>
-            </div>
-        </form>
+            <form className="form">
+                <label>Find a City</label>
+                <div className="form__info">
+                    <input type="text" className="form__name" placeholder="" name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
+                    <button type="submit" className="form__btn" onClick={handleSubmit}>Search</button>
+                </div>
+            </form>
     );
 };
 
