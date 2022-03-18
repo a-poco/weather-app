@@ -25,7 +25,7 @@ const AddWeatherForm: React.FC<AddWeatherProps> = ({ addWeather }) => {
     return (
         <form className="form">
             <label>Find a City</label>
-            <div>
+            <div className="form__form">
                 <input type="text" className="form__name" placeholder="..." name="cityName" value={cityName} onChange={handleChange} autoFocus></input>
                 <button type="submit" className="form__btn" onClick={handleSubmit}>Search</button>
             </div>
