@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: white;
-    margin-top: 2em;
+    margin-top: 1em;
     font-family: Poiret One;
     font-size: 60px;
     width: auto;
@@ -82,6 +82,7 @@ body {
     margin-top: 4em;
     margin-left: 35%;
     margin-right: 35%;
+    margin-bottom: 4em;
 }
 
 
@@ -162,11 +163,9 @@ input:focus{
 }
 
 
-@media (max-width:900px) {
+@media (max-width:641px) {
     .weather-article {
         height: 400px;
-        width: auto;
-        flex-wrap: wrap;
         margin-top: 2em;
         margin-left: 4%;
         margin-right: 4%;
@@ -190,4 +189,17 @@ input:focus{
         font-size: 40px;
     }
     
+}
+
+@media (min-width:642px) and (max-width:1281px) {
+    body {
+        background-image: none;
+    }
+
+    .weather-article {
+        height: 500px;
+        margin-left: 8%;
+        margin-right: 8%;
+        margin-bottom: 4em;
+    }
 }
