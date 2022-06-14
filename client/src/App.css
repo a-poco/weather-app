@@ -188,6 +188,19 @@ input:focus{
         margin-bottom: 2em;
         font-size: 40px;
     }
+
+    .place{
+        font-size: 18px;
+    }
+
+    .weatherCondition {
+        font-size: 25px;
+    }
+
+    .temperature{
+        font-size: 46px;
+      }
+      
     
 }
 
