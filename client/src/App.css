@@ -21,7 +21,7 @@ body {
     flex-direction: column;
     align-items: center;
     color: white;
-    margin-top: 4em;
+    margin-top: 2em;
     font-family: Poiret One;
     font-size: 60px;
     width: auto;
@@ -159,4 +159,35 @@ input:focus{
 .form__form {
     display: flex;
     flex-direction: row;
+}
+
+
+@media (max-width:900px) {
+    .weather-article {
+        height: 400px;
+        width: auto;
+        flex-wrap: wrap;
+        margin-top: 2em;
+        margin-left: 4%;
+        margin-right: 4%;
+        margin-bottom: 2em;
+    }
+
+
+    .form__name {
+        font-size: 20px;
+        padding-right: .5em;
+    }
+
+    body {
+        background-color: #333333;
+        background-image: none;
+    }
+
+    .form {
+        margin-top: 1em;
+        margin-bottom: 2em;
+        font-size: 40px;
+    }
+    
 }
