@@ -7,9 +7,9 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 //When you navigate to the root page, it would use the built react-app
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// app.use(express.static(path.resolve(__dirname, "./client/build")));
 
 
 const getTodaysDate = () => {
